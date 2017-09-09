@@ -2,6 +2,11 @@
 #include "Light.hpp"
 #include <iostream>
 
+#ifdef _MSC_VER
+#include <io.h>   // note that I changed this to a more suitable include
+#include <fcntl.h>
+#endif
+
 void read_objs(OBJ_T **list) {
   //read in objects and add them to the linked list
   double x, y, z, rad, r, g, b;
@@ -62,6 +67,10 @@ COLOR_T trace(RAY_T ray, OBJ_T *list, Light light) {
 
 
 int main() {
+  #ifdef _MSC_VER
+  _setmode(_fileno(stdout), _O_BINARY);
+  #endif
+  
   //initialize values
   Sphere sphere; 
   RAY_T ray;
@@ -106,6 +115,7 @@ int main() {
       std::cout << (unsigned char)(255 * col.r) << (unsigned char)(255 * col.g) << (unsigned char)(255 * col.b);
     }
   }
+  
   //free memory
   OBJ_T *curr;
   while (list != NULL) {
