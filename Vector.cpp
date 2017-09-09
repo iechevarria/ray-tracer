@@ -10,8 +10,7 @@ void Vector::set (double x, double y, double z) {
   this -> z = z;
 }
 
-Vector Vector::normalize (void) {
-  // Figure out how to call the function right now
+void Vector::normalize (void) {
   double len = sqrt((x*x) + (y*y) + (z*z));
   this -> x /= len;
   this -> y /= len;

@@ -15,7 +15,7 @@ class Vector {
     Vector (double x, double y, double z);
     void set (double x, double y, double z);
     
-    Vector normalize (void);
+    void normalize (void);
     double dot (Vector);
     
     Vector add (Vector);
